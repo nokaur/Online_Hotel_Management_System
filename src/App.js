@@ -1,5 +1,11 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch
+} from "react-router-dom";
+
 import Reception from "./Hotel_Management/Reception/ReceptionIndex";
 import "./styles.css";
 
@@ -14,15 +20,14 @@ class App extends Component {
     if (Username === "owner") {
     } else if (Username === "manager") {
     } else if (Username === "reception") {
-      this.setState({
-        Redirect: "./Hotel_Management/Reception/ReceptionIndex"
-      });
+      return <Redirect to="./Hotel_Management/Reception/ReceptionIndex" />;
     }
   };
   render() {
     return (
       <div className="App">
         <Login OnSubmit={this.OnSubmit} />
+        {/* <Reception/> */}
       </div>
     );
   }

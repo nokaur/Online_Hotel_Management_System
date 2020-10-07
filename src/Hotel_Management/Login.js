@@ -1,4 +1,11 @@
 import React, { Component } from "react";
+import {
+  BrowserRouter as Router,
+  Route,
+  Redirect,
+  Switch,
+  Link
+} from "react-router-dom";
 import bck from "../Hotel_Management/background.jpg";
 import {
   View,
@@ -66,7 +73,10 @@ class Login extends Component {
       <form onSubmit={this.OnSubmit}>
         <div>
           {/* <img src={bck} width="100%" height="100%" /> */}
-          <ImageBackground source={bck} style={[styles.container]}>
+          <ImageBackground
+            source="https://uploads.codesandbox.io/uploads/user/927c06c2-eee9-402d-be30-5df3ec015b1b/8IPo-background.jpg"
+            style={[styles.container]}
+          >
             <View style={[styles.view, styles.overlay]}>
               <div>
                 <table style={{ height: "100px", marginTop: "25px" }}>
@@ -120,7 +130,7 @@ class Login extends Component {
                       }}
                     >
                       <input
-                        type="text"
+                        type="password"
                         style={{
                           fontFamily: "calibri",
                           fontSize: "15px",
@@ -143,20 +153,25 @@ class Login extends Component {
                         height: "50px"
                       }}
                     >
-                      <button
-                        type="submit"
-                        style={{
-                          fontFamily: "calibri",
-                          fontSize: "18px",
-                          padding: 5,
-                          borderRadius: 8,
-                          backgroundColor: "#20B2AA",
-                          borderColor: "#20B2AA",
-                          width: "100px"
-                        }}
-                      >
-                        Login
-                      </button>
+                      <Router>
+                        <Link
+                          to="../Hotel_Management/Reception/ReceptionIndex"
+                          // type="submit"
+                          style={{
+                            fontFamily: "calibri",
+                            fontSize: "18px",
+                            padding: 5,
+                            borderRadius: 8,
+                            backgroundColor: "#20B2AA",
+                            borderColor: "#20B2AA",
+                            width: "100px",
+                            color: "white",
+                            textDecorationLine: "none"
+                          }}
+                        >
+                          Login
+                        </Link>
+                      </Router>
                     </td>
                   </tr>
                 </table>
