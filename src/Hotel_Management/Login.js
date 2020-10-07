@@ -42,9 +42,28 @@ const styles = StyleSheet.create({
 });
 
 class Login extends Component {
+  state = {
+    Username: "",
+    Password: ""
+  };
+  OnUserNameEnter = (e) => {
+    this.setState({
+      Username: e.target.value
+    });
+  };
+  OnPasswordEnter = (e) => {
+    this.setState({
+      Username: e.target.value
+    });
+  };
+  OnSubmit = (e) => {
+    //alert(this.state);
+    this.props.OnSubmit(this.state.Username);
+    e.preventDefault();
+  };
   render() {
     return (
-      <form>
+      <form onSubmit={this.OnSubmit}>
         <div>
           {/* <img src={bck} width="100%" height="100%" /> */}
           <ImageBackground source={bck} style={[styles.container]}>
@@ -78,6 +97,7 @@ class Login extends Component {
                           borderColor: "white",
                           backgroundColor: "white"
                         }}
+                        onChange={this.OnUserNameEnter}
                       />
                     </td>
                   </tr>
@@ -109,6 +129,7 @@ class Login extends Component {
                           borderColor: "white",
                           backgroundColor: "white"
                         }}
+                        onChange={this.OnPasswordEnter}
                       />
                     </td>
                   </tr>
