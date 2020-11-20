@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {
   BrowserRouter as Router,
+  RoutePath,
   Route,
   Redirect,
   Switch
@@ -13,21 +14,28 @@ import Login from "./Hotel_Management/Login";
 
 class App extends Component {
   state = {
-    Role: "",
-    Redirect: ""
+    Role: ""
   };
   OnSubmit = (Username) => {
     if (Username === "owner") {
     } else if (Username === "manager") {
     } else if (Username === "reception") {
-      return <Redirect to="./Hotel_Management/Reception/ReceptionIndex" />;
+      return <Redirect to="/reception" />;
     }
+    return;
   };
   render() {
     return (
       <div className="App">
-        <Login OnSubmit={this.OnSubmit} />
-        {/* <Reception/> */}
+        <Router>
+          <Switch>
+            {/* <Route path="/login"> */}
+            <Login OnSubmit={this.OnSubmit} />
+            {/* </Route> */}
+            <Route path="/reception" to={Reception} />
+            {/* <Reception/> */}
+          </Switch>
+        </Router>
       </div>
     );
   }
